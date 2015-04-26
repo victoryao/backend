@@ -22,5 +22,12 @@ public class UserController {
 		userManager.addUser(user);
 		return "ok";
 	}
+	
+	@RequestMapping("/user/get")
+	public String addUser(@RequestParam(required = true) int id){
+		User user = userManager.getUserById(id);
+		System.out.println(user);
+		return "ok";
+	}
 
 }

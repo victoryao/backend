@@ -3,7 +3,6 @@ package com.yaohoo.be.dao.entity;
 import java.io.Serializable;
 
 public class User implements Serializable{
-
 	
 	/**
 	 * 
@@ -14,6 +13,8 @@ public class User implements Serializable{
 	private String name;
 	private String password;
 	private String phone;
+	
+	public User(){}
 	
 	public User(String name, String password, String phone) {
 		this.name = name;
@@ -44,6 +45,12 @@ public class User implements Serializable{
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", password=" + password
+				+ ", phone=" + phone + "]";
 	}
 
 }

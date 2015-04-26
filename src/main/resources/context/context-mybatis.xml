@@ -42,7 +42,8 @@
 
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.yaohoo.be.dao.mapper" />
+		<property name="basePackage" value="com.yaohoo.be.dao.mapper.read,
+											com.yaohoo.be.dao.mapper.write" />
 		<property name="sqlSessionTemplateBeanName" value="sqlSession" />
 	</bean>
 
