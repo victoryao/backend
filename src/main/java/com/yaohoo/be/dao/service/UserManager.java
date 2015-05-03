@@ -25,4 +25,8 @@ public class UserManager {
 	public User getUserById(int id){
 		return userReadMapper.getUserById(id);
 	}
+
+	public User getUserByName(String userName,String password) {
+		return userReadMapper.getUserByName(userName,password);
+	}
 }

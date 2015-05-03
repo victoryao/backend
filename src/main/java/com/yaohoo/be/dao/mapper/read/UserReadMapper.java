@@ -10,4 +10,7 @@ public interface UserReadMapper {
 	@Select("select id,name,password,phone from user where id = #{id}")
 	public User getUserById(@Param("id") int id);
 
+	@Select("select id,name,password,phone from user where name = #{name} and password = #{password}")
+	public User getUserByName(@Param("name") String name,@Param("password") String password);
+
 }
