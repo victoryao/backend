@@ -136,14 +136,19 @@ public class ActivityController extends BaseController{
 		return "/activity/activityList";
 	}
 
-	@RequestMapping(value = "/activity/{aId}/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/activity/update", method = RequestMethod.POST)
 	public String updateActivity(
 			@RequestParam(required = true) int aId,
 			@RequestParam(required = true) String subject,
-			@RequestParam(required = false, defaultValue = "") String content
+			@RequestParam(required = false, defaultValue = "") String content, 
+			ModelMap modelMap
 
 	) {
 		activityManager.updateActivity(aId, subject, content);
+		PageView<ActivityDO> pageView = new PageView<ActivityDO>(pageSize, 1);
+		QueryResult<ActivityDO> qr = activityManager.getActivitySubjectList(pageView.getFirstResult(),pageView.getMaxresult());
+		pageView.setQueryResult(qr);
+		modelMap.addAttribute("pageView",pageView);
 		return "/activity/activityList";
 	}
 

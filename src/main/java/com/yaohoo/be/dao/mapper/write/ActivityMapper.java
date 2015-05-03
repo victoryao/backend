@@ -2,6 +2,7 @@ package com.yaohoo.be.dao.mapper.write;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
@@ -23,10 +24,10 @@ public interface ActivityMapper {
 	public void delActivityContent(int aId);
 	
 	@Update("update activity_subject set subject = #{subject} where id = #{id}")
-	public Object updateActivitySubject(int id, String subject);
+	public void updateActivitySubject(@Param("subject")String subject,@Param("id")int id);
 	
 	@Update("update activity_content set content = #{content} where a_id = #{aId}")
-	public Object updateActivityContent(int aId,String content);
+	public void updateActivityContent(@Param("content")String content,@Param("aId")int aId);
 
 	@Update("update activity_subject set type = 1 where id = #{aId}")
 	public void upActivity(int aId);

@@ -136,14 +136,19 @@ public class ClassController extends BaseController{
 		return "/class/classList";
 	}
 
-	@RequestMapping(value = "/class/{cId}/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/class/update", method = RequestMethod.POST)
 	public String updateClass(
 			@RequestParam(required = true) int cId,
 			@RequestParam(required = true) String subject,
-			@RequestParam(required = false, defaultValue = "") String content
+			@RequestParam(required = false, defaultValue = "") String content, 
+			ModelMap modelMap
 
 	) {
 		classManager.updateClass(cId, subject, content);
+		PageView<ClassDO> pageView = new PageView<ClassDO>(pageSize, 1);
+		QueryResult<ClassDO> qr = classManager.getClassSubjectList(pageView.getFirstResult(),pageView.getMaxresult());
+		pageView.setQueryResult(qr);
+		modelMap.addAttribute("pageView",pageView);
 		return "/class/classList";
 	}
 

@@ -1,7 +1,7 @@
 <?php
 /*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
- * Copyright (C) 2003-2010 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
  *
@@ -54,9 +54,6 @@ function FCKeditor_IsCompatibleBrowser()
 	}
 	else if ( strpos($sAgent, 'Gecko/') !== false )
 	{
-		// Firefox 17+
-		if (preg_match("|Gecko/\d+\.\d+|", $sAgent))
-			return true;
 		$iVersion = (int)substr($sAgent, strpos($sAgent, 'Gecko/') + 6, 8) ;
 		return ($iVersion >= 20030210) ;
 	}

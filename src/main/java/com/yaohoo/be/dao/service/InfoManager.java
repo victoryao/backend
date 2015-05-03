@@ -47,9 +47,9 @@ public class InfoManager {
 	}
 	
 	@Transactional
-	public void updateInfo(int aId,String subject,String content){
-		infoMappper.updateInfoSubject(aId,subject);
-		infoMappper.updateInfoContent(aId,content);
+	public void updateInfo(int iId,String subject,String content){
+		infoMappper.updateInfoSubject(subject,iId);
+		infoMappper.updateInfoContent(content,iId);
 	}
 
 	public InfoDO getInfoContent(int aId) {

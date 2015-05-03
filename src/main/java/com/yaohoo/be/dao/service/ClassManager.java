@@ -48,8 +48,8 @@ public class ClassManager {
 	
 	@Transactional
 	public void updateClass(int cId,String subject,String content){
-		classMappper.updateClassSubject(cId,subject);
-		classMappper.updateClassContent(cId,content);
+		classMappper.updateClassSubject(subject,cId);
+		classMappper.updateClassContent(content,cId);
 	}
 
 	public ClassDO getClassContent(int cId) {

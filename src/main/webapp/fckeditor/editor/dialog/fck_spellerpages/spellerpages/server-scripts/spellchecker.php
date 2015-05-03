@@ -13,10 +13,7 @@ $tempfiledir	= "./";
 
 $spellercss		= '../spellerStyle.css';						// by FredCK
 $word_win_src	= '../wordWindow.js';							// by FredCK
-# ignore invalid data
-if (empty($_POST['textinputs']) || !is_array($_POST['textinputs'])) {
-  die();
-}
+
 $textinputs		= $_POST['textinputs']; # array
 $input_separator = "A";
 
@@ -25,11 +22,9 @@ $input_separator = "A";
 # value of the text control submitted for spell-checking
 function print_textinputs_var() {
 	global $textinputs;
-	for( $i = 0; $i < count( $textinputs ); $i++ ) {
-		if (!isset($textinputs[$i]))
-			break;
+	foreach( $textinputs as $key=>$val ) {
 		# $val = str_replace( "'", "%27", $val );
-		echo "textinputs[$i] = decodeURIComponent(\"" . htmlspecialchars($textinputs[$i], ENT_QUOTES) . "\");\n";
+		echo "textinputs[$key] = decodeURIComponent(\"" . $val . "\");\n";
 	}
 }
 
@@ -86,9 +81,6 @@ function print_checker_results() {
 	# open temp file, add the submitted text.
 	if( $fh = fopen( $tempfile, 'w' )) {
 		for( $i = 0; $i < count( $textinputs ); $i++ ) {
-			# ignore invalid data
-			if (!isset($textinputs[$i]))
-				break;
 			$text = urldecode( $textinputs[$i] );
 
 			// Strip all tags for the text. (by FredCK - #339 / #681)

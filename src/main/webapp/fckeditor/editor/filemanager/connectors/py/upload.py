@@ -2,7 +2,7 @@
 
 """
 FCKeditor - The text editor for Internet - http://www.fckeditor.net
-Copyright (C) 2003-2010 Frederico Caldeira Knabben
+Copyright (C) 2003-2009 Frederico Caldeira Knabben
 
 == BEGIN LICENSE ==
 
@@ -48,7 +48,7 @@ class FCKeditorQuickUpload(	FCKeditorConnectorBase,
 
 		# Check if it is an allowed command
 		if ( not command in Config.ConfigAllowedCommands ):
-			return self.sendUploadResults( 1, '', '', 'The requested command isn\'t allowed' )
+			return self.sendUploadResults( 1, '', '', 'The %s command isn\'t allowed' % command )
 
 		if ( not resourceType in Config.ConfigAllowedTypes  ):
 			return self.sendUploadResults( 1, '', '', 'Invalid type specified' )

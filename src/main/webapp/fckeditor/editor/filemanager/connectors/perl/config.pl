@@ -1,6 +1,6 @@
 #####
 #  FCKeditor - The text editor for Internet - http://www.fckeditor.net
-#  Copyright (C) 2003-2010 Frederico Caldeira Knabben
+#  Copyright (C) 2003-2009 Frederico Caldeira Knabben
 #
 #  == BEGIN LICENSE ==
 #
@@ -31,9 +31,6 @@ $GLOBALS{'UserFilesPath'} = '/userfiles/';
 # Map the "UserFiles" path to a local directory.
 $rootpath = &GetRootPath();
 $GLOBALS{'UserFilesDirectory'} = $rootpath . $GLOBALS{'UserFilesPath'};
-
-# WARNING: It is recommended to remove swf extension from the list of allowed extensions.
-# SWF files can be used to perform XSS attack.
 
 %allowedExtensions =  ("File", "7z|aiff|asf|avi|bmp|csv|doc|fla|flv|gif|gz|gzip|jpeg|jpg|mid|mov|mp3|mp4|mpc|mpeg|mpg|ods|odt|pdf|png|ppt|pxd|qt|ram|rar|rm|rmi|rmvb|rtf|sdc|sitd|swf|sxc|sxw|tar|tgz|tif|tiff|txt|vsd|wav|wma|wmv|xls|xml|zip",
 "Image", "bmp|gif|jpeg|jpg|png",

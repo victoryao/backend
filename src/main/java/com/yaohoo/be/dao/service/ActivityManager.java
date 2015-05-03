@@ -48,8 +48,8 @@ public class ActivityManager {
 	
 	@Transactional
 	public void updateActivity(int aId,String subject,String content){
-		activityMappper.updateActivitySubject(aId,subject);
-		activityMappper.updateActivityContent(aId,content);
+		activityMappper.updateActivitySubject(subject,aId);
+		activityMappper.updateActivityContent(content,aId);
 	}
 
 	public ActivityDO getActivityContent(int aId) {

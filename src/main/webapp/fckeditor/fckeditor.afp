@@ -1,6 +1,6 @@
 <%
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
- * Copyright (C) 2003-2010 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
  *
@@ -114,13 +114,8 @@ DEFINE CLASS goFckeditor AS CONTAINER OLEPUBLIC
 			llRetval= iVersion > 5.5
 		ELSE
 			IF AT("gecko/",sAgent)>0
-				iVersion=VAL(SUBSTR(sAgent,AT("gecko/",sAgent)+6,4))
-				IF ( 2000 > iVersion )
-					llRetval=.T.
-				ELSE
-					iVersion=VAL(SUBSTR(sAgent,AT("gecko/",sAgent)+6,8))
-					llRetval =iVersion > 20030210
-				ENDIF
+				iVersion=VAL(SUBSTR(sAgent,AT("gecko/",sAgent)+6,8))
+				llRetval =iVersion > 20030210
 			ENDIF
 		ELSE
 			IF AT("opera/",sAgent)>0

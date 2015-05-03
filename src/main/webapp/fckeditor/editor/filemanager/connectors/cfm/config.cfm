@@ -1,7 +1,7 @@
 <cfsetting enablecfoutputonly="Yes">
 <!---
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
- * Copyright (C) 2003-2010 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
  *
@@ -112,9 +112,6 @@
 //		Examples: 'C:\\MySite\\userfiles\\' or '/root/mysite/userfiles/'.
 //		Attention: The above 'QuickUploadPath' must point to the same directory.
 //		Attention: It must end with a slash: '/'
-// 
-// WARNING: It is recommended to remove swf extension from the list of allowed extensions.
-// SWF files can be used to perform XSS attack.
 
 	Config.AllowedExtensions 				= StructNew() ;
 	Config.DeniedExtensions 				= StructNew() ;

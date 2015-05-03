@@ -136,14 +136,19 @@ public class InfoController extends BaseController{
 		return "/info/infoList";
 	}
 
-	@RequestMapping(value = "/info/{iId}/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/info/update", method = RequestMethod.POST)
 	public String updateInfo(
 			@RequestParam(required = true) int iId,
 			@RequestParam(required = true) String subject,
-			@RequestParam(required = false, defaultValue = "") String content
+			@RequestParam(required = false, defaultValue = "") String content, 
+			ModelMap modelMap
 
 	) {
 		infoManager.updateInfo(iId, subject, content);
+		PageView<InfoDO> pageView = new PageView<InfoDO>(pageSize, 1);
+		QueryResult<InfoDO> qr = infoManager.getInfoSubjectList(pageView.getFirstResult(),pageView.getMaxresult());
+		pageView.setQueryResult(qr);
+		modelMap.addAttribute("pageView",pageView);
 		return "/info/infoList";
 	}
 

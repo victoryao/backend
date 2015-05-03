@@ -1,7 +1,7 @@
 [//lasso
 /*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
- * Copyright (C) 2003-2010 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
  *
@@ -93,7 +93,7 @@
 		';
 	/define_tag;
 
-	if($CurrentFolder->(Find: '..') || (String_FindRegExp: $CurrentFolder, -Find='(/\\.)|(//)|[\\\\:\\;\\.\\*\\?\\""\\<\\>\\|]|\\000|[\u007F]|[\u0001-\u001F]'));
+	if($CurrentFolder->(Find: '..') || (String_FindRegExp: $CurrentFolder, -Find='(/\\.)|(//)|[\\\\:\\*\\?\\""\\<\\>\\|]|\\000|[\u007F]|[\u0001-\u001F]'));
 		$errorNumber = 102;
 	/if;
 
@@ -116,7 +116,7 @@
 				files. (Test.txt, Test(1).txt, Test(2).txt, etc.)
 				*/
 				$NewFileName = $NewFile->find('OrigName');
-				$NewFileName = (String_ReplaceRegExp: $NewFileName, -find='\\\\|\\/|\\||\\:|\\;|\\?|\\*|"|<|>|\\000|[\u007F]|[\u0001-\u001F]', -replace='_');
+				$NewFileName = (String_ReplaceRegExp: $NewFileName, -find='\\\\|\\/|\\||\\:|\\?|\\*|"|<|>|\\000|[\u007F]|[\u0001-\u001F]', -replace='_');
 				$NewFileName = (String_ReplaceRegExp: $NewFileName, -find='\\.(?![^.]*$)', -replace='_');
 				$OrigFilePath = $currentFolderURL + $NewFileName;
 				$NewFilePath = $OrigFilePath;
