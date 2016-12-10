@@ -48,6 +48,7 @@ public class ClassController extends BaseController{
 		QueryResult<ClassDO> qr = classManager.getClassSubjectList(pageView.getFirstResult(),pageView.getMaxresult());
 		pageView.setQueryResult(qr);
 		modelMap.addAttribute("pageView", pageView);	
+		modelMap.addAttribute("highLightDiv", "class");
 		return "/class/classList";
 
 	}

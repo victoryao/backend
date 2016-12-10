@@ -37,12 +37,16 @@ public class SessionFilter implements Filter {
 			ServletException {
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse) res;
+		 String requestURI = request.getRequestURI();
+		if(requestURI.contains("api") || requestURI.contains("client") || requestURI.equals("/admin.do")){
+			chain.doFilter(req, res);
+        }
 		HttpSession session = request.getSession();
         // 如果Session为空，则跳转到指定页面
         if (session == null || session.getAttribute(Constant.sessionCheckKey) == null) {
-            String requestURI = request.getRequestURI();
+            requestURI = request.getRequestURI();
             if(!requestURI.equals("/user/login.do")){
-            	response.sendRedirect("/");
+            	response.sendRedirect("/admin.do");
             }else{
             	chain.doFilter(req, res);
             }

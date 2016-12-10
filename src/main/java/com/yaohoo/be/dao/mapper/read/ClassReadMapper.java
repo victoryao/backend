@@ -18,6 +18,9 @@ public interface ClassReadMapper {
 	@Select("select count(1) from class_content")
 	public long countClass();
 
+	@Select("select id,subject,status,type,updated,created from class_subject where status=0 order by type desc, updated desc limit #{offset},#{limit}")
+	public List<ClassDO> getClientClassSubjectList(@Param("offset") int offset,@Param("limit") int limit);
+
 	
 
 }

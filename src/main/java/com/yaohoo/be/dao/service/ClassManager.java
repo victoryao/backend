@@ -36,6 +36,11 @@ public class ClassManager {
 		return qr;
 	}
 	
+	public List<ClassDO> getClientClassSubjectList(int offset,int limit) {
+		List<ClassDO> list = classReadMapper.getClientClassSubjectList(offset,limit);
+		return list;
+	}
+	
 	public long countClass(){
 		return classReadMapper.countClass();
 	}
@@ -76,5 +81,7 @@ public class ClassManager {
 		classMappper.offlineClass(aId);
 		
 	}
+
+	
 
 }

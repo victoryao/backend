@@ -13,87 +13,140 @@ import com.yaohoo.be.dao.entity.InfoDO;
 import com.yaohoo.be.dao.service.ActivityManager;
 import com.yaohoo.be.dao.service.ClassManager;
 import com.yaohoo.be.dao.service.InfoManager;
+
 @Controller
 public class NavController {
-	
+
 	@Resource
 	private ActivityManager activityManager;
 	@Resource
 	private InfoManager infoManager;
 	@Resource
 	private ClassManager classManager;
-	
+
 	@RequestMapping("/toMain")
-	public String toMainPage(){
+	public String toMainPage() {
 		return "main";
 	}
-	
-	@RequestMapping("/toLogin")
-	public String toLoginPage(){
+
+	@RequestMapping("/admin")
+	public String toLoginPage() {
 		return "login";
 	}
-	
+
 	@RequestMapping("/toAddActivity")
-	public String toAddActivityPage(){
+	public String toAddActivityPage(ModelMap modelMap) {
+		modelMap.addAttribute("highLightDiv", "activity");
 		return "/activity/addActivity";
 	}
-	
+
 	@RequestMapping("/toAddInfo")
-	public String toAddInfoPage(){
+	public String toAddInfoPage(ModelMap modelMap) {
+		modelMap.addAttribute("highLightDiv", "info");
 		return "/info/addInfo";
 	}
-	
+
 	@RequestMapping("/toAddClass")
-	public String toAddClassPage(){
+	public String toAddClassPage(ModelMap modelMap) {
+		modelMap.addAttribute("highLightDiv", "class");
 		return "/class/addClass";
 	}
-	
+
 	@RequestMapping("/toManageActivity")
-	public String toManageActivityPage(){
+	public String toManageActivityPage() {
 		return "/activity/activityList";
 	}
-	
+
 	@RequestMapping("/toManageInfo")
-	public String toManageInfoPage(){
+	public String toManageInfoPage() {
 		return "/info/infoList";
 	}
-	
+
 	@RequestMapping("/toManageClass")
-	public String toManageClassPage(){
+	public String toManageClassPage() {
 		return "/class/classList";
 	}
-	
+
+	@RequestMapping("/client/main")
+	public String toClientMainPage() {
+		return "/client/index";
+	}
+
+	@RequestMapping("/client/intro")
+	public String toClientIntroPage() {
+		return "/client/intro";
+	}
+
+	@RequestMapping("/client/infos")
+	public String toClientInfosPage() {
+		return "/client/infos";
+	}
+
+	@RequestMapping("/client/classes")
+	public String toClientClassesPage() {
+		return "/client/classes";
+	}
+
+	@RequestMapping("/client/activities")
+	public String toClientActivitiesPage() {
+		return "/client/activities";
+	}
+
+	@RequestMapping("/client/info/content")
+	public String toClientInfoContentPage(
+			@RequestParam(required = true) int id,
+			@RequestParam(required = true) String subject, ModelMap modelMap) {
+		InfoDO infoDO = infoManager.getInfoContent(id);
+		infoDO.setSubject(subject);
+		modelMap.addAttribute("infoDO", infoDO);
+		return "/client/info";
+	}
+
+	@RequestMapping("/client/class/content")
+	public String toClientClassContentPage(
+			@RequestParam(required = true) int id,
+			@RequestParam(required = true) String subject, ModelMap modelMap) {
+		ClassDO classDO = classManager.getClassContent(id);
+		classDO.setSubject(subject);
+		modelMap.addAttribute("classDO", classDO);
+		return "/client/class";
+	}
+
+	@RequestMapping("/client/activity/content")
+	public String toClientActivityContentPage(
+			@RequestParam(required = true) int id,
+			@RequestParam(required = true) String subject, ModelMap modelMap) {
+		ActivityDO activityDO = activityManager.getActivityContent(id);
+		activityDO.setSubject(subject);
+		modelMap.addAttribute("activityDO", activityDO);
+		return "/client/activity";
+	}
+
 	@RequestMapping("/toEditActivity")
-	public String toEditActivityPage(
-			@RequestParam(required = true) int aId,
-			@RequestParam(required = true) String subject,
-			ModelMap modelMap){
+	public String toEditActivityPage(@RequestParam(required = true) int aId,
+			@RequestParam(required = true) String subject, ModelMap modelMap) {
 		ActivityDO activityDO = activityManager.getActivityContent(aId);
 		activityDO.setSubject(subject);
 		modelMap.addAttribute("activityDO", activityDO);
 		return "/activity/editActivity";
 	}
-	
+
 	@RequestMapping("/toEditInfo")
-	public String toEditInfoPage(
-			@RequestParam(required = true) int iId,
-			@RequestParam(required = true) String subject,
-			ModelMap modelMap){
+	public String toEditInfoPage(@RequestParam(required = true) int iId,
+			@RequestParam(required = true) String subject, ModelMap modelMap) {
 		InfoDO infoDO = infoManager.getInfoContent(iId);
 		infoDO.setSubject(subject);
 		modelMap.addAttribute("infoDO", infoDO);
 		return "/info/editInfo";
 	}
-	
+
 	@RequestMapping("/toEditClass")
-	public String toEditClassPage(
-			@RequestParam(required = true) int cId,
-			@RequestParam(required = true) String subject,
-			ModelMap modelMap){
+	public String toEditClassPage(@RequestParam(required = true) int cId,
+			@RequestParam(required = true) String subject, ModelMap modelMap) {
 		ClassDO classDO = classManager.getClassContent(cId);
 		classDO.setSubject(subject);
 		modelMap.addAttribute("classDO", classDO);
 		return "/class/editClass";
 	}
-	
+
 }

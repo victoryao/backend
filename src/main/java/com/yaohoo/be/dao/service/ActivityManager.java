@@ -36,6 +36,11 @@ public class ActivityManager {
 		return qr;
 	}
 	
+	public List<ActivityDO> getActivitySujectList(int offset,int limit) {
+		List<ActivityDO> list = activityReadMapper.getClientActivitySubjectList(offset,limit);
+		return list;
+	}
+	
 	public long countActivity(){
 		return activityReadMapper.countActivity();
 	}
@@ -76,5 +81,7 @@ public class ActivityManager {
 		activityMappper.offlineActivity(aId);
 		
 	}
+
+	
 
 }

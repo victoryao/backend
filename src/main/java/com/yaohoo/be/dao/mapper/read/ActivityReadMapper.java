@@ -18,6 +18,9 @@ public interface ActivityReadMapper {
 	@Select("select count(1) from activity_content")
 	public long countActivity();
 
+	@Select("select id,subject,status,type,updated,created from activity_subject where status=0 order by type desc, updated desc limit #{offset},#{limit}")
+	public List<ActivityDO> getClientActivitySubjectList(@Param("offset") int offset,@Param("limit") int limit);
+
 	
 
 }

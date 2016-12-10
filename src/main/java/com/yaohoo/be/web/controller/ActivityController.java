@@ -48,6 +48,7 @@ public class ActivityController extends BaseController{
 		QueryResult<ActivityDO> qr = activityManager.getActivitySubjectList(pageView.getFirstResult(),pageView.getMaxresult());
 		pageView.setQueryResult(qr);
 		modelMap.addAttribute("pageView", pageView);	
+		modelMap.addAttribute("highLightDiv", "activity");
 		return "/activity/activityList";
 
 	}

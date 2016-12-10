@@ -48,6 +48,7 @@ public class InfoController extends BaseController{
 		QueryResult<InfoDO> qr = infoManager.getInfoSubjectList(pageView.getFirstResult(),pageView.getMaxresult());
 		pageView.setQueryResult(qr);
 		modelMap.addAttribute("pageView", pageView);	
+		modelMap.addAttribute("highLightDiv", "info");
 		return "/info/infoList";
 
 	}

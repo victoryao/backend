@@ -36,6 +36,11 @@ public class InfoManager {
 		return qr;
 	}
 	
+
+	public List<InfoDO> getClientInfoSubjectList(int offset,int limit){
+		return infoReadMapper.getClientInfoSubjectList(offset,limit);
+	}
+	
 	public long countInfo(){
 		return infoReadMapper.countInfo();
 	}

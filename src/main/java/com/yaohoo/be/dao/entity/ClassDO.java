@@ -15,6 +15,12 @@ public class ClassDO {
 	
 	public ClassDO() {
 	}
+	public int getcId() {
+		return cId;
+	}
+	public void setcId(int cId) {
+		this.cId = cId;
+	}
 	public ClassDO(String subject, String content) {
 		this.subject = subject;
 		this.content = content;
@@ -38,12 +44,7 @@ public class ClassDO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getaId() {
-		return cId;
-	}
-	public void setaId(int aId) {
-		this.cId = aId;
-	}
+	
 	public Date getCreated() {
 		return created;
 	}
@@ -68,5 +69,10 @@ public class ClassDO {
 	public void setType(int type) {
 		this.type = type;
 	}
-	
+	@Override
+	public String toString() {
+		return "ClassDO [id=" + id + ", cId=" + cId + ", subject=" + subject
+				+ ", content=" + content + ", status=" + status + ", type="
+				+ type + ", created=" + created + ", updated=" + updated + "]";
+	}
 }
